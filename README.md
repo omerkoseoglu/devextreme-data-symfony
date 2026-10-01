@@ -86,13 +86,23 @@ become nested JSON. Without it any plain column name of the query is accepted. U
 **`DbalSource::forTable($connection, 'orders', ...)`**, arrays/iterables (handled in memory) and any
 `DataSourceInterface` work too.
 
-### Things to know
+## Known limitations
 
-- Results are scalar rows, not hydrated entities: no lifecycle events, no type conversion (dates are strings, booleans
-  are 0/1 on most drivers).
-- Doctrine **SQL filters** (soft-delete, tenancy) are not applied to `EntitySource`: express them with `where:`/`whereParams:`.
-- `EntitySource` rejects entities with inheritance mapping (use `DbalSource`).
-- All filter values are bound parameters; field names are whitelisted (mapping/`columns`) or identifier-checked.
+- **Scalar rows, no hydration.** No entities, lifecycle events or Doctrine type conversion: dates are strings, booleans
+  are `0`/`1` on most drivers.
+- **`pdo_*` drivers only** (`pdo_sqlite`, `pdo_mysql`, `pdo_pgsql`). mysqli and other drivers throw a `LogicException`.
+- **Queries bypass the DBAL layer.** They run on the native PDO connection, so Doctrine's SQL logger, the Symfony
+  profiler's database panel and DBAL middlewares do not see them.
+- **Doctrine SQL filters are not applied** (soft-delete, tenancy). Put such constraints into the `DbalSource` query or
+  the `where:` / `whereParams:` arguments of `EntitySource`.
+- **`EntitySource` exposes mapped fields and owning many-to-one associations** (as the foreign key). Collections
+  (one-to-many, many-to-many) are not exposed, and entities with inheritance mapping are rejected: use `DbalSource`.
+- **The query builder is captured once** when `DbalSource::forQueryBuilder()` is called. Array parameters are supported
+  with named placeholders only (`IN (:ids)`).
+- **Dates and timezones:** filter dates are compared as wall-clock time and never converted; see the core package's
+  known limitations (browser `Date` values reach the server as UTC).
+- **Tested with** Doctrine DBAL 4 and ORM 3 on Symfony 7.4 and 8.x (PHP 8.2+).
+- All filter values are bound parameters; field names are whitelisted (mapping or `columns`) or identifier-checked.
 
 ## Development
 
