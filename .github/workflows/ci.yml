@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  tests:
+    name: PHP ${{ matrix.php }} / Symfony ${{ matrix.symfony }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { php: '8.2', symfony: '7.4' }
+          - { php: '8.3', symfony: '7.4' }
+          - { php: '8.4', symfony: '7.4' }
+          - { php: '8.4', symfony: '8.0' }
+    steps:
+      - uses: actions/checkout@v4
+      # the core package is a sibling path repository during development; in CI it comes from Packagist
+      - name: Use the released core package
+        run: composer config --unset repositories.0 && composer require "mihenk/devextreme-data:^0.1 || dev-main" --no-update
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, pdo, pdo_sqlite
+          coverage: none
+      - run: >
+          composer require
+          "symfony/config:^${{ matrix.symfony }}" "symfony/dependency-injection:^${{ matrix.symfony }}"
+          "symfony/http-foundation:^${{ matrix.symfony }}" "symfony/http-kernel:^${{ matrix.symfony }}"
+          "symfony/framework-bundle:^${{ matrix.symfony }}" --dev -W --no-interaction --no-progress
+      - run: composer cs
+      - run: composer test
