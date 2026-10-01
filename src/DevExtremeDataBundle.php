@@ -24,10 +24,13 @@ final class DevExtremeDataBundle extends AbstractBundle
                     ->info('Compare ISO-8601 filter dates as wall-clock time (no timezone conversion) in SQL.')
                     ->defaultTrue()
                 ->end()
-                ->integerNode('max_take')
+                ->scalarNode('max_take')
                     ->info('Upper bound for "take"; null = unlimited. Leave null for endpoints that feed a PivotGrid.')
                     ->defaultNull()
-                    ->min(1)
+                    ->validate()
+                        ->ifTrue(static fn (mixed $v): bool => $v !== null && (!is_int($v) || $v < 1))
+                        ->thenInvalid('max_take must be null or a positive integer.')
+                    ->end()
                 ->end()
             ->end();
     }

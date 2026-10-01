@@ -44,7 +44,7 @@ final class TestKernel extends Kernel
             'php_errors' => ['log' => true],
         ]);
 
-        $container->extension('devextreme_data', $this->maxTake === null ? [] : ['max_take' => $this->maxTake]);
+        $container->extension('devextreme_data', ['max_take' => $this->maxTake]); // null = explicit "~"
 
         $services = $container->services();
         $services->defaults()->autowire()->autoconfigure();

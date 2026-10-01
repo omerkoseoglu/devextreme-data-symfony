@@ -104,4 +104,11 @@ final class HttpTest extends FunctionalTestCase
         [, $json] = $this->get('/table', ['isCountQuery' => 'true']);
         self::assertSame(8, $json['totalCount']);
     }
+
+    public function testInvalidMaxTakeConfigurationIsRejected(): void
+    {
+        $this->expectException(\Symfony\Component\Config\Definition\Exception\InvalidConfigurationException::class);
+
+        (new \DevExtreme\Data\Symfony\Tests\Fixtures\TestKernel('test', false, 0))->boot();
+    }
 }
