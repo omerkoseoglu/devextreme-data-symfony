@@ -12,6 +12,7 @@
         "pivotgrid",
         "server-side"
     ],
+    "homepage": "https://github.com/omerkoseoglu/devextreme-data-symfony",
     "require": {
         "php": "^8.2",
         "omerkoseoglu/devextreme-data": "^0.1 || dev-main",
@@ -59,5 +60,9 @@
         "sort-packages": true
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "support": {
+        "issues": "https://github.com/omerkoseoglu/devextreme-data-symfony/issues",
+        "source": "https://github.com/omerkoseoglu/devextreme-data-symfony"
+    }
 }
