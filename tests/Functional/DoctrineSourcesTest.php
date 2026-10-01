@@ -81,7 +81,7 @@ final class DoctrineSourcesTest extends FunctionalTestCase
 
         $result = $this->load($source, ['filter' => [['total', '>=', 240], 'and', ['who.name', 'Boss']], 'select' => ['id', 'who.name']]);
 
-        // total >= 240: 5 (250), 7 (240), 8 (420); Boss = person 1 <=> id % 3 = 0: ids 3 and 6 only -> no overlap
+        // total >= 240 matches orders 5, 7, 8; "Boss" owns only orders 3 and 6
         self::assertSame([], $result['data']);
 
         $any = $this->load($source, ['filter' => ['total', '>=', 240], 'select' => ['id', 'who.name'], 'sort' => [['selector' => 'id']]]);

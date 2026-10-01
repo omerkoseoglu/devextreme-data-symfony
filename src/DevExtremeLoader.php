@@ -17,9 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-/**
- * The `devextreme_data.loader` service: turns a request into a DevExtreme answer.
- */
 final class DevExtremeLoader
 {
     public function __construct(

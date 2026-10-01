@@ -9,9 +9,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ValueResolverInterface;
 use Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadata;
 
-/**
- * Lets controllers type-hint `LoadOptions $options`.
- */
 final class LoadOptionsValueResolver implements ValueResolverInterface
 {
     public function __construct(private readonly DevExtremeLoader $loader)
