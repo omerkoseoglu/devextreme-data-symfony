@@ -14,7 +14,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "mihenk/devextreme-data": "*@dev",
+        "mihenk/devextreme-data": "^0.1 || dev-main",
         "symfony/config": "^7.4 || ^8.0",
         "symfony/dependency-injection": "^7.4 || ^8.0",
         "symfony/http-foundation": "^7.4 || ^8.0",

@@ -1,6 +1,8 @@
 # DevExtreme Data for Symfony
 
-Symfony bundle for [`mihenk/devextreme-data`](../devextreme-php-data): answer DevExtreme widget requests
+> **Unofficial.** This is an independent, community-maintained port. It is not affiliated with, endorsed by or supported by Developer Express Inc. "DevExtreme" and "DevExpress" are trademarks of Developer Express Inc.
+
+Symfony bundle for `mihenk/devextreme-data`: answer DevExtreme widget requests
 (`DataGrid`, `PivotGrid`, `SelectBox`, ... with `remoteOperations`) from Doctrine DBAL queries, ORM entity mappings,
 tables or arrays. Filtering, sorting, paging, grouping and summaries run **in the database**.
 
