@@ -2,7 +2,7 @@
 
 > **Unofficial.** This is an independent, community-maintained port. It is not affiliated with, endorsed by or supported by Developer Express Inc. "DevExtreme" and "DevExpress" are trademarks of Developer Express Inc.
 
-Symfony bundle for `mihenk/devextreme-data`: answer DevExtreme widget requests
+Symfony bundle for `omerkoseoglu/devextreme-data`: answer DevExtreme widget requests
 (`DataGrid`, `PivotGrid`, `SelectBox`, ... with `remoteOperations`) from Doctrine DBAL queries, ORM entity mappings,
 tables or arrays. Filtering, sorting, paging, grouping and summaries run **in the database**.
 
@@ -11,7 +11,7 @@ Requires PHP 8.2+ and Symfony 7.4 or 8.x. Doctrine sources need a `pdo_sqlite`, 
 ## Install
 
 ```bash
-composer require mihenk/devextreme-data-symfony
+composer require omerkoseoglu/devextreme-data-symfony
 ```
 
 Symfony Flex enables the bundle; otherwise add it to `config/bundles.php`:
