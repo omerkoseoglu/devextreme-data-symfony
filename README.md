@@ -1,5 +1,7 @@
 # DevExtreme Data for Symfony
 
+[![Packagist Version](https://img.shields.io/packagist/v/omerkoseoglu/devextreme-data-symfony)](https://packagist.org/packages/omerkoseoglu/devextreme-data-symfony) [![PHP Version](https://img.shields.io/packagist/dependency-v/omerkoseoglu/devextreme-data-symfony/php)](https://packagist.org/packages/omerkoseoglu/devextreme-data-symfony) [![CI](https://github.com/omerkoseoglu/devextreme-data-symfony/actions/workflows/ci.yml/badge.svg)](https://github.com/omerkoseoglu/devextreme-data-symfony/actions/workflows/ci.yml) [![Downloads](https://img.shields.io/packagist/dt/omerkoseoglu/devextreme-data-symfony)](https://packagist.org/packages/omerkoseoglu/devextreme-data-symfony) [![License](https://img.shields.io/packagist/l/omerkoseoglu/devextreme-data-symfony)](LICENSE)
+
 > **Unofficial.** This is an independent, community-maintained port. It is not affiliated with, endorsed by or supported by Developer Express Inc. "DevExtreme" and "DevExpress" are trademarks of Developer Express Inc.
 
 Symfony bundle for `omerkoseoglu/devextreme-data`: answer DevExtreme widget requests
